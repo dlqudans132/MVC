@@ -1,0 +1,97 @@
+tbsql > sql접속
+CONN 아이디/비번
+
+테이블 만들기
+CREATE TABLE 테이블이름 (탭 형식(자리수), 탭 형식(자리수) ) ;
+
+테이블 값 확인
+desc 테이블명
+
+값 넣기
+INSERT INTO 테이블이름 ( 탭, 탭, 탭) VALUES ( 값, 값, 값 ) ;
+
+값 넣은거 반영
+commit
+
+탭에서 해당하는 값 지우기
+DELETE FROM 테이블 WHERE 탭 = 값;
+
+지운거 돌려놓기
+ROLLBACK;  
+
+모든 괄호는 소괄호만 사용
+한 줄 단위로 편집되므로 신중히 입력
+잘못된 철자 지우기 ctrl + backspace
+대소문자의 구분이 없으나 일부에는 구분됨.
+명령의 맨 뛰는 ; 으로 끝남
+괄호를 닫을 시 맨 끝에 , 는 생략
+
+탭 추가
+ALTER TABLE 테이블이름 ADD (탭 값속성, 탭 값속성);
+
+제한 설정
+ALTER TABLE 테이블이름 MODIFY (탭 NOT NULL);
+
+속성 변경
+ALTER TABLE 테이블이름 MODIFY (탭 값속성);
+
+이름바꾸기
+ALTER TABLE 테이블이름 RENAME COLUMN 전-탭 TO 후-탭
+
+테이블 삭제
+DROP 테이블이름
+
+테이블에서 컬럼1과 컬럼2 출력
+SELECT 컬럼1, 컬럼2 FROM 테이블;
+
+테이블 컬럼에서 중복값 제거
+SELECT DISTINCT 컬럼 FROM 테이블;
+
+테이블에서 특정조건 출력
+SELECT 컬럼, 컬럼 FROM 테이블
+WHERE 컬럼=’값’
+
+테이블에서 특정조건 오름차,내림차 출력
+SELECT 컬럼, 컬럼 FROM 테이블
+WHERE 컬럼=’값’
+ORDER BY 컬럼 ASC / DESC
+
+테이블 데이터 수 만큼 연산 출력
+SELECT 1+2, 2-1 FROM 테이블
+
+데이터 수만큼 문자를 합쳐서 출력
+SELECT CONCAT( ‘ 문자열 ‘, ‘ 문자열 ‘ ) FROM 테이블;
+
+조건
+값이 5이상인 : WHERE 컬럼 >= 5
+값이 5이상 10이하인 : WHERE 컬럼 BETWEEN 5 AND 10;
+
+제공된 목록과 일치하는 데이터만 출력
+SELECT 컬럼 FROM 테이블 WHERE 컬럼 IN (데이터1, 데이터2, 데이터3)
+
+특정 문자를 포함한 데이터 검색
+SELECT 컬럼 FROM 테이블 WHERE 컬럼 LIKE ‘%문자%’
+
+대소문자 구분없이
+WHERE UPPER(컬럼) LIKE ‘%문자%’
+
+특수문자 포함
+WHERE 컬럼 LIKE ‘%구분자 특문%’ ESCAPE ‘구분자’;
+
+데이터가 비어있으면 출력
+WHERE 컬럼 IS NULL;
+
+데이터가 있으면 출력
+WHERE 컬럼 IS NOT NULL;
+
+어느것 하나만 충족하면 출력
+WHERE 컬럼 >= ANY (데이터1 , 데이터2 );
+
+모든 조건 충족하면 출력
+WHERE 컬럼 >= ALL(데이터1 , 데이터2)
+
+두 조건 다 충족
+WHERE 컬럼 = 데이터 AND 컬럼 > 데이터;
+
+둘중 하나 충족
+WHERE 조건 OR 조건;
